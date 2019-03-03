@@ -22,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
         //Para hacer referencia a un componente del layout, utilizamos el metodo findViewById
         //y le pasamos como parametro el id correspondiente.
         //Para hacer referencia al Textview con id tv
+        
         TextView tv = findViewById(R.id.tv);
 
+        String txt = getResources().getString(R.string.cuenta);
 
         //Para cambiar el texto de tv
-        tv.setText("Hola mundo");
+        tv.setText("Neftali Hernandez " + txt);
 
         //Actividades
         //a) Modifica el texto "Hola mundo", pon tu nombre y ejecuta la aplicacion
