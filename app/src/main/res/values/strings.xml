@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DMoviles</string>
+    <string name="nombre"></string>
 </resources>
