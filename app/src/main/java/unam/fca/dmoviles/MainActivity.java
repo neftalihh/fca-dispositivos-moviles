@@ -1,18 +1,23 @@
 package unam.fca.dmoviles;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Se requiere que sea public para hacer referencia a esta variable en otra actividad
+    public static final String  EXTRA_MESSAGE = "EXTRA_MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Actividad 1 Introduccion a TextView.
-        //https://developer.android.com/reference/android/widget/TextView
-        //TextView es un componente de Android que permite desplegar texto.
+        //Actividad 3 Introduccion a Intents
+        //https://developer.android.com/training/basics/firstapp/starting-activity
+        //Intent es un mecanismo que puede ser usado para iniciar otras actividades
 
         // El archivo del layout de la actividad se encuentra en la carpeta
         // res/layout/activity_main.xml
@@ -21,22 +26,28 @@ public class MainActivity extends AppCompatActivity {
 
         //Para hacer referencia a un componente del layout, utilizamos el metodo findViewById
         //y le pasamos como parametro el id correspondiente.
-        //Para hacer referencia al Textview con id tv
-        
-        TextView tv = findViewById(R.id.tv);
+        final Button btn = findViewById(R.id.btn);
 
-        String txt = getResources().getString(R.string.cuenta);
 
-        //Para cambiar el texto de tv
-        tv.setText("Neftali Hernandez " + txt);
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, SegundaActividad.class);
+                intent.putExtra(EXTRA_MESSAGE, "Mensaje de Neftali...");
+                startActivity(intent);
+
+            }
+        });
+
 
         //Actividades
-        //a) Modifica el texto "Hola mundo", pon tu nombre y ejecuta la aplicacion
-        //b) Crea una entrada en la carpeta res/values/strings.xml con tu numero de cuenta
-        //c) modifica setText para que lea esta entrada de texto (Tip, puedes hacer referencia al texto con R.string.<id entrada>)
-        //d) Ejecuta la aplicacion
-        //e) Sube tu codigo al repositorio.
-        //f) Sube un documento en word a la plataforma Moodle con las capturas de pantalla de tu actividad. Incluye la liga a tu repositorio
+        //a) Ejecuta la aplicacion
+        //b) Revisa la referencia y agrega el codigo en el archivo SegundaActividad para que el textview muestre el mensaje que se manda en EXTRA_MESSAGE
+        //c) Que otros tipos de datos se pueden mandar?
+        //d) Revisa el archivo AdroidManifest.xml, que cambios presenta el archivo respecto al de la actividad 2?
+        //e) Anota tus respuestas en un documento en Word
+        //f) Sube tu codigo al repositorio.
+        //g) Sube el documento en word a la plataforma Moodle con las capturas de pantalla de tu actividad. Incluye la liga a tu repositorio
 
     }
 }
